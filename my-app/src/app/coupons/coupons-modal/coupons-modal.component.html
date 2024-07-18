@@ -1,0 +1,111 @@
+<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+
+    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <!-- Modal content -->
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                    Coupon
+                </h3>
+                <div class="col-auto text-black cursor-pointer" (click)="closeModal();">
+                    X
+                </div>
+                <div class="p-4 md:p-5">
+                    <form [formGroup]="couponForm" (ngSubmit)="onSubmit()" class="space-y-4">
+                        <div>
+                            <label for="coupon_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Coupon Code</label>
+                            <input type="text" name="coupon_code" id="coupon_code" formControlName="coupon_code"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                placeholder="Coupon Code" required />
+                            <div *ngIf="coupon_code?.invalid && (coupon_code?.dirty || coupon_code?.touched)" class="text-red-600 text-sm">
+                                Coupon code is required.
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="discount_percentage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Discount Percentage</label>
+                            <input type="number" name="discount_percentage" id="discount_percentage" formControlName="discount_percentage"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                placeholder="Discount Percentage" required />
+                            <div *ngIf="discount_percentage?.invalid && (discount_percentage?.dirty || discount_percentage?.touched)" class="text-red-600 text-sm">
+                                <div *ngIf="discount_percentage?.errors?.['required']">Discount percentage is required.</div>
+                                <div *ngIf="discount_percentage?.errors?.['min']">Discount percentage must be between 0 and 100.</div>
+                                <div *ngIf="discount_percentage?.errors?.['max']">Discount percentage must be between 0 and 100.</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="validity_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Validity Type</label>
+                            <select id="validity_type" formControlName="validity_type"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="" disabled>Select validity type</option>
+                                <option value="SPECIFIC_DATE">Specific Date</option>
+                                <option value="WEEKDAYS">Weekdays</option>
+                                <option value="WEEKENDS">Weekends</option>
+                                <option value="SPECIFIC_DAYS">Specific Days</option>
+                            </select>
+                            <div *ngIf="validity_type?.invalid && (validity_type?.dirty || validity_type?.touched)" class="text-red-600 text-sm">
+                                Validity type is required.
+                            </div>
+                        </div>
+
+                        <div *ngIf="validity_type?.value === 'SPECIFIC_DATE' || validity_type?.value === 'WEEKDAYS' || validity_type?.value === 'WEEKENDS'">
+                            <div>
+                                <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Start Date</label>
+                                <input type="date" name="start_date" id="start_date" formControlName="start_date"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    placeholder="Start Date" required />
+                                <div *ngIf="start_date?.invalid && (start_date?.dirty || start_date?.touched)" class="text-red-600 text-sm">
+                                    Start date is required.
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">End Date</label>
+                                <input type="date" name="end_date" id="end_date" formControlName="end_date"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    placeholder="End Date" required />
+                                <div *ngIf="end_date?.invalid && (end_date?.dirty || end_date?.touched)" class="text-red-600 text-sm">
+                                    End date is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="validity_type?.value === 'SPECIFIC_DAYS'">
+                            <div formArrayName="valid_days" *ngFor="let day of valid_days.controls; let i = index;">
+                                <div [formGroupName]="i" class="flex items-center space-x-4">
+                                    <select formControlName="day"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="" disabled>Select day</option>
+                                        <option value="MONDAY">Monday</option>
+                                        <option value="TUESDAY">Tuesday</option>
+                                        <option value="WEDNESDAY">Wednesday</option>
+                                        <option value="THURSDAY">Thursday</option>
+                                        <option value="FRIDAY">Friday</option>
+                                        <option value="SATURDAY">Saturday</option>
+                                        <option value="SUNDAY">Sunday</option>
+                                    </select>
+                                    <button type="button" (click)="removeDay(i)" class="text-red-600">Remove</button>
+                                </div>
+                            </div>
+                            <button type="button" (click)="addDay()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Day</button>
+                        </div>
+
+                        <div>
+                            <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Comment</label>
+                            <textarea name="comment" id="comment" formControlName="comment"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+                                placeholder="Comment"></textarea>
+                        </div>
+
+                        <button type="submit" [disabled]="couponForm.invalid"
+                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

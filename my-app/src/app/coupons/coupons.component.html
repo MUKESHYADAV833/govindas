@@ -1,0 +1,90 @@
+<!-- Modal toggle -->
+<button (click)="openModal()"
+    class="my-2 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    type="button">
+    Add
+</button>
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-md">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 item-center">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Coupons ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Coupon Code
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Discount Percentage
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Comment
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Day
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Start Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    End Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Edit</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Delete</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                *ngFor="let item of couponsArray">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{item.coupon_id}}
+                </th>
+                <td class="px-6 py-4">
+                    {{item.coupon_code}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.discount_percentage}}%
+                </td>
+                <td class="px-6 py-4">
+                    {{item.comment}}
+                </td>
+                <td class="px-6 py-4">
+
+                    <span *ngFor="let data of item.valid_days">
+                        {{data.day}} | 
+                    </span>
+                </td>
+                <td class="px-6 py-4">
+                    {{item.start_date}}
+                </td>
+                <td class="px-6 py-4">
+                    {{item.end_date}}
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        (click)="openModal(item)">Edit</button>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        (click)="deleteItem(item)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<!--Modal Box-->
+<div *ngIf="modalOpen" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-coupon" role="dialog"
+    aria-modal="true">
+    <app-coupons-modal [item]="selectedItem" (close)="closeModal()"></app-coupons-modal>
+
+</div>

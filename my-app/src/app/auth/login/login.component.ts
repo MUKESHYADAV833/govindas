@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CryptoManager } from 'src/app/services/crypto-manager.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/models/User';
 
 @Component({
   selector: 'app-login',
@@ -12,39 +15,51 @@ import { environment } from 'src/environments/environment';
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  public data: any;
+  public curUser: User = {
+    phone: 0,
+    location: '',
+    restaurantName: '',
+    username: '',
+    uid: ''
+  };
 
-  constructor(private fb: FormBuilder, private crypto: CryptoManager, private storage:StorageService ) {
+  constructor(private fb: FormBuilder, private crypto: CryptoManager, private storage: StorageService, private route: Router) {
     this.loginForm = this.fb.group({
-      emailOrPhone: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}|[0-9]{10}')]],
+      phone: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}|[0-9]{10}')]],
       password: ['', Validators.required]
     });
   }
 
+  private subscriptions: Subscription[] = [];
   ngOnInit() {
 
-    if (this.isLocalStorageAvailable()) {
-      let res: any = this.storage.getItem('credentials');
-      this.data = this.crypto.decrypt(res, environment.salt_auth);
-      return this.data ? JSON.parse(this.data) : null;
-    } else {
-      return null;
-    }
+    // if (this.isLocalStorageAvailable()) {
+    //   let res: any = JSON.parse(this.crypto.decrypt(this.storage.getItem('credentials'), environment.salt_auth));
+    //   this.curUser = {
+    //     location: res.location,
+    //     phone: res.phone,
+    //     restaurantName: res.restaurantName,
+    //     uid: res.uid,
+    //     username: res.username
+    //   };
+    // }
+
 
   }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      if (this.data.emailOrPhone == this.loginForm.value.emailOrPhone) {
-        if (this.data.password == this.loginForm.value.password) {
-          const loginData = this.loginForm.value;
-          console.log('Login Data:', loginData);
-          // Add logic to send data to the server here
-        } else {
-          alert("Please enter correct password")
-        }
+      let res: any;
+      if (this.isLocalStorageAvailable()) {
+        res = JSON.parse(this.crypto.decrypt(this.storage.getItem('credentials'), environment.salt_auth));
+      }
+      if (res.phone == this.loginForm.value.phone && res.password == this.loginForm.value.password) {
+        this.storage.updateUser(this.curUser)
+        this.storage.setItem('auth', this.crypto.encrypt(JSON.stringify(this.loginForm.value), environment.salt_auth));
+
+        this.route.navigate(['/menu']);
       } else {
-        alert("Please enter correct email")
+        alert("Please enter correct Phone no/password")
       }
     }
     else {
