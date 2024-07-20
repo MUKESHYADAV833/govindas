@@ -14,6 +14,7 @@ import { CouponsModalComponent } from './coupons/coupons-modal/coupons-modal.com
 import { PosComponent } from './pos/pos.component';
 import { OrderListComponent } from './pos/order-list/order-list.component';
 import { MenuPosComponent } from './pos/menu-pos/menu-pos.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MenuPosComponent } from './pos/menu-pos/menu-pos.component';
     CouponsModalComponent,
     PosComponent,
     OrderListComponent,
-    MenuPosComponent
+    MenuPosComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

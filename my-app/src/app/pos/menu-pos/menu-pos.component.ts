@@ -17,4 +17,7 @@ export class MenuPosComponent implements OnInit {
     }
   }
 
+  //map menu 
+  //add functionality
+
 }

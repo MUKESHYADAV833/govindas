@@ -70,6 +70,21 @@
                         </div>
 
                         <div>
+                            <label for="type"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Select
+                                Category</label>
+                            <select id="type" formControlName="category"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="" disabled>Select food Category</option>
+                                <option value="Food">Food</option>
+                                <option value="Beverages">Beverages</option>
+                            </select>
+                            <div *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="text-red-600 text-sm">
+                                Type is required.
+                            </div>
+                        </div>
+
+                        <div>
                             <label for="imageUrl"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Image
                                 URL

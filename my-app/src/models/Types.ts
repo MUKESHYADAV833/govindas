@@ -3,6 +3,7 @@ export interface Menu {
     price: number;
     qty: number;
     type: 'veg' | 'non-veg',
+    category:'Food' | 'Beverages',
     imageUrl: string;
     restaurant_id: string;
     menu_id: string;

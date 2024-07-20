@@ -45,6 +45,7 @@ export class ModalWindowComponent implements OnInit, OnChanges, OnDestroy {
       price: ['', [Validators.required, Validators.min(0)]],
       qty: ['', [Validators.required, Validators.min(0)]],
       type: ['', Validators.required],
+      category: ['', Validators.required],
       imageUrl: ['', [Validators.pattern('(https?://.*\\.(?:png|jpg))')]],
       restaurant_id: [''],
       menu_id: ['']
