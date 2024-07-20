@@ -11,6 +11,9 @@ import { MenuCreationComponent } from './menu-creation/menu-creation.component';
 import { ModalWindowComponent } from './menu-creation/modal.window/modal.window.component';
 import { CouponsComponent } from './coupons/coupons.component';
 import { CouponsModalComponent } from './coupons/coupons-modal/coupons-modal.component';
+import { PosComponent } from './pos/pos.component';
+import { OrderListComponent } from './pos/order-list/order-list.component';
+import { MenuPosComponent } from './pos/menu-pos/menu-pos.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { CouponsModalComponent } from './coupons/coupons-modal/coupons-modal.com
     MenuCreationComponent,
     ModalWindowComponent,
     CouponsComponent,
-    CouponsModalComponent
+    CouponsModalComponent,
+    PosComponent,
+    OrderListComponent,
+    MenuPosComponent
   ],
   imports: [
     BrowserModule,

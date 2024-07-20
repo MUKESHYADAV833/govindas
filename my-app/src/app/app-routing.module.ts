@@ -6,12 +6,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuCreationComponent } from './menu-creation/menu-creation.component';
 import { AuthGuard } from './shared/auth.guard';
 import { CouponsComponent } from './coupons/coupons.component';
+import { PosComponent } from './pos/pos.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'menu', component: MenuCreationComponent,canActivate:[AuthGuard] },
   { path: 'coupons', component: CouponsComponent,canActivate:[AuthGuard] },
+  { path: 'pos', component: PosComponent,canActivate:[AuthGuard] },
 
   // Wildcard routes
   { path: '**', component: NotFoundComponent }

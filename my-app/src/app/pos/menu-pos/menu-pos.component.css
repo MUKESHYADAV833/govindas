@@ -1,0 +1,38 @@
+
+.tabs {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+
+.menu-list {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 60vh;
+    overflow: auto;
+
+}
+
+.menu-card {
+    margin: 10px;
+    background-color: lightblue;
+    height: 15rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: center; */
+    /* transition: transform 0.3s ease; */
+    flex-direction: column;
+
+}
+
+.menu-card>img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+

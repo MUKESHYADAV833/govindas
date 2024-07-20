@@ -1,0 +1,25 @@
+.order-list {
+    /* width: 150px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: antiquewhite;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.order-list>h1 {
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.order-list-container {
+    flex-wrap: nowrap;
+    overflow: auto;
+
+}
+
+.order-list-container::-webkit-scrollbar {
+    display: none;
+}
