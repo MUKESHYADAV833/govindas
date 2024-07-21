@@ -1,30 +1,39 @@
 <div class="tabs py-4">
     <button
-        class="rounded-lg px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300">
+        class="rounded-lg px-4 py-2 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300" [ngClass]="{ 'active': isActive, 'inactive': !isActive }" (click)="selectCategory('Food')">
         Food</button>
-    <button class="rounded-lg px-4 py-2 ms-1 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300">
+    <button class="rounded-lg px-4 py-2 border-2 ms-1 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300" [ngClass]="{ 'active': !isActive, 'inactive': isActive }" (click)="selectCategory('Beverages')">
         Beverages</button>
 </div>
 <div class="w-full">
     <h1 class="font-bold ms-2 text-2xl">Select Menu</h1>
     <div class="w-full flex menu-list">
         <!-- <div class="menu-card pb-2"> -->
-        <div class="menu-card pb-2" *ngFor="let item of arr">
+        <div class="menu-card pb-2" *ngFor="let item of category">
             <img class="w-full rounded-lg"
                 src="https://images.unsplash.com/photo-1448043552756-e747b7a2b2b8?q=80&w=1952&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="">
             <div class="ms-2 w-full">
-                <h1 class="font-bold text-left">Menu name</h1>
+                <h1 class="font-bold text-left">{{item.name}}</h1>
             </div>
             <div class="ms-2 w-full">
-                <span>stock:10</span>
+                <span>stock:{{item.qty}}</span>
             </div>
 
             <div class="flex justify-between gap-3 w-full items-center px-2">
-                <span>₹1000</span>
-                <button
-                    class="rounded-lg px-2 py-1 border-2 border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-blue-100 duration-300">Add</button>
+                <span>{{item.price}}</span>
+                <button type="button" class="flex items-center bg-green-500 text-white px-2 py-1 rounded" (click)="addItem(item)">
+                    <svg *ngIf="item.isActive" class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" (click)="num_tem(item,'sub')">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>        
+                    {{ item.isActive==false && (item.value ==1 || item.value==0) ?  'Add': item.value }}
+                    <svg *ngIf="item.isActive" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg" (click)="num_tem(item,'sum')">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                  </button>
             </div>
+            
         </div>
     </div>
 </div>

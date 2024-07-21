@@ -26,3 +26,4 @@ export interface Coupons {
 export interface Days {
     day: 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
 }
+
