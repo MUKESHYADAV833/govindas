@@ -11,7 +11,7 @@ export class MenuPosComponent implements OnInit {
 
   arr: any = [];
   ngOnInit(): void {
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 50; i++) {
       this.arr.push("we")
 
     }

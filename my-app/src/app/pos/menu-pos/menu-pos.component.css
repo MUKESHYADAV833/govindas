@@ -1,20 +1,19 @@
-
 .tabs {
     display: flex;
     justify-content: center;
-
+    align-items: center;
 
 }
 
 
 .menu-list {
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     flex-wrap: wrap;
-    height: 50vh;
-    overflow: auto;
-
+    height: 55vh;
+    overflow-y: auto;
+    position: absolute;
+    bottom: 80px;
 }
 
 .menu-card {
@@ -24,10 +23,7 @@
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
-    /* align-items: center; */
-    /* transition: transform 0.3s ease; */
     flex-direction: column;
-
 }
 
 .menu-card>img {
@@ -36,3 +32,284 @@
     object-fit: cover;
 }
 
+
+
+
+/* For screens between 360px and 399px height */
+@media (min-height: 360px) and (max-height: 399px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 12vh;
+    }
+}
+
+/* For screens between 400px and 439px height */
+@media (min-height: 400px) and (max-height: 439px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 22vh;
+    }
+}
+
+/* For screens between 440px and 479px height */
+@media (min-height: 440px) and (max-height: 479px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 28vh;
+    }
+}
+
+/* For screens between 480px and 519px height */
+@media (min-height: 480px) and (max-height: 519px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 35vh;
+    }
+}
+
+/* For screens between 520px and 559px height */
+@media (min-height: 520px) and (max-height: 559px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 40vh;
+    }
+}
+
+/* For screens between 560px and 599px height */
+@media (min-height: 560px) and (max-height: 599px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 40vh;
+    }
+}
+
+/* For screens between 600px and 639px height */
+@media (min-height: 600px) and (max-height: 639px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 45vh;
+    }
+}
+
+/* For screens between 640px and 679px height */
+@media (min-height: 640px) and (max-height: 679px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 50vh;
+    }
+}
+
+/* For screens between 680px and 719px height */
+@media (min-height: 680px) and (max-height: 719px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 50vh;
+    }
+}
+
+/* For screens between 720px and 759px height */
+@media (min-height: 720px) and (max-height: 759px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 55vh;
+    }
+}
+
+/* For screens between 760px and 799px height */
+@media (min-height: 760px) and (max-height: 799px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 55vh;
+    }
+}
+
+/* For screens between 800px and 839px height */
+@media (min-height: 800px) and (max-height: 839px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 60vh;
+    }
+}
+
+/* For screens between 840px and 879px height */
+@media (min-height: 840px) and (max-height: 879px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 60vh;
+    }
+}
+
+/* For screens between 880px and 919px height */
+@media (min-height: 880px) and (max-height: 919px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 60vh;
+    }
+}
+
+/* For screens between 920px and 959px height */
+@media (min-height: 920px) and (max-height: 959px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 62vh;
+    }
+}
+
+/* For screens between 960px and 999px height */
+@media (min-height: 960px) and (max-height: 999px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 65vh;
+    }
+}
+
+/* For screens between 1000px and 1039px height */
+@media (min-height: 1000px) and (max-height: 1039px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 65vh;
+    }
+}
+
+/* For screens between 1040px and 1079px height */
+@media (min-height: 1040px) and (max-height: 1079px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 70vh;
+    }
+}
+
+/* For screens between 1080px and 1119px height */
+@media (min-height: 1080px) and (max-height: 1119px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 70vh;
+    }
+}
+
+/* For screens between 1120px and 1159px height */
+@media (min-height: 1120px) and (max-height: 1159px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 70vh;
+    }
+}
+
+/* For screens between 1160px and 1199px height */
+@media (min-height: 1160px) and (max-height: 1199px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 70vh;
+    }
+}
+
+/* For screens between 1200px and 1239px height */
+@media (min-height: 1200px) and (max-height: 1239px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 70vh;
+    }
+}
+
+/* For screens between 1240px and 1279px height */
+@media (min-height: 1240px) and (max-height: 1279px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 70vh;
+    }
+}
+
+/* For screens between 1280px and 1319px height */
+@media (min-height: 1280px) and (max-height: 1319px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1320px and 1359px height */
+@media (min-height: 1320px) and (max-height: 1359px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1360px and 1399px height */
+@media (min-height: 1360px) and (max-height: 1399px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1400px and 1439px height */
+@media (min-height: 1400px) and (max-height: 1439px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1440px and 1479px height */
+@media (min-height: 1440px) and (max-height: 1479px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1480px and 1519px height */
+@media (min-height: 1480px) and (max-height: 1519px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1520px and 1559px height */
+@media (min-height: 1520px) and (max-height: 1559px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 75vh;
+    }
+}
+
+/* For screens between 1560px and 1599px height */
+@media (min-height: 1560px) {
+
+    /* Your CSS rules here */
+    .menu-list {
+        height: 80vh;
+    }
+}

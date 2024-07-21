@@ -1,2 +1,8 @@
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div *ngIf="minHeight >= 360px">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</div>
+
+<div *ngIf="minHeight < 360px" class="text-center font-bold w-full h-screen flex items-center justify-center">
+    Please Use device with higher resolution
+</div>
